@@ -17,6 +17,12 @@ public class Snake extends Rectangle {
 		mY=0;
 		this.coords=coords;
 	}
+	public Snake(int x, int y, ArrayList<Coordinates> coords, int xSpeed, int ySpeed) {
+		super(x,y,40,40);
+		mX=xSpeed;
+		mY=ySpeed;
+		this.coords=coords;
+	}
 	public void addCoord(Coordinates c) {
 		coords.add(c);
 	}

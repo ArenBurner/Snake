@@ -27,6 +27,9 @@ public class Game extends GDV5 implements KeyListener {
 		if(KeysPressed[KeyEvent.VK_S]) {
 			moveSnake(3);
 		}
+		if(KeysPressed[KeyEvent.VK_P]) {
+			addSnakeBody();
+		}
 		time++;
 		if(time/15==1) {
 			for(Snake s: snake) {
@@ -35,6 +38,13 @@ public class Game extends GDV5 implements KeyListener {
 			time=0;
 		}
 		
+	}
+	private void addSnakeBody() {
+		Snake bodyPiece = snake.get(0); //gets tail piece
+		int xSpeed = bodyPiece.xSpeed();
+		int ySpeed = bodyPiece.ySpeed();
+		ArrayList<Coordinates> coordinate = bodyPiece.getCoords();
+		snake.add(0, new Snake(bodyPiece.x-xSpeed, bodyPiece.y-ySpeed, coordinate, xSpeed, ySpeed));
 	}
 	private void moveSnake(int direction) {
 		int x = snake.get(snake.size()-1).returnXPos();
